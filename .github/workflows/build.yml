@@ -103,6 +103,12 @@ jobs:
             if (error) {
               throw new Error('Failed to build one or more configurations');
             }
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build
+        run: |
+          # B1 Proをビルドするコマンドの例
+          west build -b keychron -s app -- -DSHIELD=keychron_b1_us
   compile-matrix:
     if: ${{ always() }}
     runs-on: ubuntu-latest
